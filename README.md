@@ -1,2 +1,2 @@
 # instantForms
- https://vaidhikraj.github.io/instantForms/
+ https://nagadeepsharma.github.io/Instant-Forms/
