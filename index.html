@@ -9,6 +9,9 @@
     
 </head>
 <body>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    
     <div class="heading">
         <h1>Instant Forms</h1>
     </div>
@@ -30,10 +33,28 @@
         </div>
 
     </div>    
-    <table class="tbl">
+    <table class="tbl" id="example">
     
 
     </table>
+    <button onclick="Export()">export</button>
+        <script type="text/javascript">
+        function Export() {
+            html2canvas(document.getElementById('example'), {
+                onrendered: function (canvas) {
+                    var data = canvas.toDataURL();
+                    var docDefinition = {
+                        content: [{
+                            image: data,
+                            width: 500
+                        }]
+                    };
+                    pdfMake.createPdf(docDefinition).download("Table.pdf");
+                }
+            });
+        }
+    </script>
+
 
     <script src="app.js"></script>
 </body>
